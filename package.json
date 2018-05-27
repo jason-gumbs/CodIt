@@ -4,8 +4,7 @@
   "description": "Bootstrap 4 workflow",
   "main": "index.js",
   "scripts": {
-    "build": "gulp",
-  "start": "node gulpfile.js"
+    "start": "gulp"
   },
   "author": "Brad Traversy",
   "license": "MIT",
