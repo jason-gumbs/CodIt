@@ -18,10 +18,13 @@ gulp.task('js', function(){
 });
 
 // Watch Sass & Server
-gulp.task('serve', ['sass'], function(){
-  browserSync.init({
-    proxy: process.env.PORT
+gulp.task('serveprod', ['sass'], function() {
+  connect.server({
+    root: [your_project_path],
+    port: process.env.PORT || 5000, // localhost:5000
+    livereload: false
   });
+
 
   gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/*.scss'], ['sass']);
   gulp.watch("src/*.html").on('change', browserSync.reload);
