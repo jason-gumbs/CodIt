@@ -9,7 +9,7 @@ var mongoose = require("mongoose");
 
 
 // Require all models
-var db = require("./models");
+
 
 var PORT = process.env.PORT || 3000;
 
@@ -28,11 +28,6 @@ app.use(express.static("dist"));
 // By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
 // Connect to the Mongo DB
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapper";
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
 
 
 // Start the server
