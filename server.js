@@ -1,7 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
-var mongoose = require("mongoose");
+var sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -20,6 +21,8 @@ var app = express();
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
+
+app.use(bodyParser.json()); 
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
@@ -29,6 +32,22 @@ app.use(express.static("dist"));
 // Connect to the Mongo DB
 
 
+
+
+
+app.post('/contact', function (req, res, next) {
+  console.log(req.body)
+  var msg = {
+  to: 'fwgumbs@gmail.com',
+  from: req.body.email,
+  subject: 'New codit Inquiry',
+  text: req.body.email,
+  text: req.body.message
+  
+};
+sgMail.send(msg);
+  next()
+})
 
 // Start the server
 app.listen(PORT, function() {
