@@ -45,9 +45,7 @@ app.post('/contact', function (req,res, next) {
   
 };
 sgMail.send(msg);
-
-res.send('/index.html')
-
+res.redirect('/');
  next()
 })
 
