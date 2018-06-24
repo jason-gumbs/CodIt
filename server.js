@@ -35,17 +35,22 @@ app.use(express.static("dist"));
 
 
 
-app.post('/contact', function (req, res, next) {
-  console.log(req.body)
+app.post('/contact', function (req,res, error, next) {
+  if (error) {
+    alert('Error Please resend contact form');
+    res.send('index')
+  }
   var msg = {
   to: 'fwgumbs@gmail.com',
   from: req.body.email,
   subject: 'New codit Inquiry',
-  text: req.body.email,
-  text: req.body.message
+  text:req.body.name+ ' '+ req.body.message
   
 };
 sgMail.send(msg);
+alert("thank you will get back to you shortly")
+res.send('index')
+
   next()
 })
 
