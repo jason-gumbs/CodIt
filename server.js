@@ -35,7 +35,7 @@ app.use(express.static("dist"));
 
 
 
-app.post('/contact', function (req,res, error, next) {
+app.post('/contact', function (req,res, next) {
  
   var msg = {
   to: 'fwgumbs@gmail.com',
@@ -48,7 +48,7 @@ sgMail.send(msg);
 alert("thank you will get back to you shortly")
 res.send('index.html')
 
- 
+ next()
 })
 
 // Start the server
