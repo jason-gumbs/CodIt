@@ -45,8 +45,8 @@ app.post('/contact', function (req,res, next) {
   
 };
 sgMail.send(msg);
-alert("thank you will get back to you shortly")
-res.send('index.html')
+
+res.send('/index.html')
 
  next()
 })
