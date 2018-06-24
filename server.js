@@ -36,10 +36,7 @@ app.use(express.static("dist"));
 
 
 app.post('/contact', function (req,res, error, next) {
-  if (error) {
-    alert('Error Please resend contact form');
-    res.send('index')
-  }
+ 
   var msg = {
   to: 'fwgumbs@gmail.com',
   from: req.body.email,
@@ -49,9 +46,9 @@ app.post('/contact', function (req,res, error, next) {
 };
 sgMail.send(msg);
 alert("thank you will get back to you shortly")
-res.send('index')
+res.send('index.html')
 
-  next()
+ 
 })
 
 // Start the server
