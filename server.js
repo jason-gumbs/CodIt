@@ -38,7 +38,7 @@ app.use(express.static("dist"));
 app.post('/contact', function (req,res) {
  
   var msg = {
-  to: 'fwgumbs@gmail.com',
+  to: 'info@cod-it.tech',
   from: req.body.email,
   subject: 'New codit Inquiry',
   text:req.body.name+ ' '+ req.body.message
