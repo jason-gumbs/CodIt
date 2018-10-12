@@ -49,7 +49,7 @@ app.post('/contact', function (req,res) {
         from: req.body.email,
         to: 'info@cod-it.tech',
         subject: 'New Codit Inquiry',
-        text: `${req.body.name}  \n  ${req.body.message}`
+        text: `from ${req.body.email} \n clients name${req.body.name}  \n  ${req.body.message}`
     };
 
     transporter.sendMail(mailOptions, function(error, info){
