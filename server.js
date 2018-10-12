@@ -1,21 +1,19 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var logger = require("morgan");
-var sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+let express = require("express");
+let bodyParser = require("body-parser");
+let logger = require("morgan");
 
-// Our scraping tools
-// Axios is a promised-based http library, similar to jQuery's Ajax method
-// It works on the client and on the server
+let nodemailer = require('nodemailer');
+
+
 
 
 // Require all models
 
 
-var PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3000;
 
 // Initialize Express
-var app = express();
+let app = express();
 
 // Configure middleware
 
@@ -37,19 +35,33 @@ app.use(express.static("dist"));
 
 app.post('/contact', function (req,res) {
 
-    console.log("@@@@@@@@@@@@hey******************");
 
-    var msg = {
-  to: 'info@cod-it.tech',
-  from: req.body.email,
-  subject: 'New codit Inquiry',
-  text:req.body.name+ ' '+ req.body.message
-  
-};
-sgMail.send(msg);
-console.log(res.statusCode)
 
-res.redirect('/');
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.GMAIL,
+            pass: process.env.GMAIL_KEY
+        }
+    });
+
+    let mailOptions = {
+        from: req.body.email,
+        to: 'info@cod-it.tech',
+        subject: 'Sending Email using Node.js',
+        text: req.body.name + req.body.message
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.redirect('/');
+        }
+    });
+
+
 
 })
 
