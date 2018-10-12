@@ -48,8 +48,8 @@ app.post('/contact', function (req,res) {
     let mailOptions = {
         from: req.body.email,
         to: 'info@cod-it.tech',
-        subject: 'Sending Email using Node.js',
-        text: req.body.name + req.body.message
+        subject: 'New Codit Inquiry',
+        text: `${req.body.name}  \n  ${req.body.message}`
     };
 
     transporter.sendMail(mailOptions, function(error, info){
