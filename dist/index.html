@@ -525,15 +525,15 @@
         <div class="row">
             <div class="col-lg-9">
                 <h1 class="text-primary pb-3 m-lg-auto">
-                    Contact Us
+                    Subscribe
                 </h1>
-                <form class="needs-validation" novalidate action="/contact" method="POST">
+                <form class="needs-validation" novalidate action="https://my.zift123.com/rest/contactforms/8a99833d73db0e030173e36b76581ac1/contactformpost" method="POST">
                     <div class="form-group">
 
                         <div class="input-group input-group-lg">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             <label for="validationCustom01"></label>
-                            <input type="text" name="name" id="validationCustom01" class="form-control" placeholder="Name" required>
+                            <input type="text" name="COMPANY" id="validationCustom01" class="form-control" placeholder="Company Name" required>
                             <div class="invalid-feedback">
                                 Please fill all fields.
                             </div>
@@ -550,11 +550,14 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group input-group-lg">
-                            <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                             <label for="validationCustom03"></label>
-
-                            <textarea type="text" class="form-control" name="message" id="validationCustom03" placeholder="Message" rows="5" required></textarea>
-
+                            <input type="radio" name="SUBSCRIPTION_PREF" id="validationCustom03" value="OPTIN_TO_ALL_LISTS" checked>&nbsp;&nbsp; All future email communications
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <label for="validationCustom04"></label>
+                            <input type="radio" name="SUBSCRIPTION_PREF" id="validationCustom04" value="SELECTIVE" checked>&nbsp;&nbsp; Only selected email communications
                         </div>
                     </div>
                     <input type="submit" value="Submit" id="btn" class="btn btn-primary btn-block btn-lg">
@@ -566,7 +569,7 @@
                 <br />
                 <!-- <p><i class="fas fa-mobile-alt"></i> &ensp; +1 404-551-0080</p> -->
                 <br />
-                <p><i class="fas fa-address-card"></i> &ensp; info@cod-it.tech </p>
+                <p><i class="fas fa-address-card"></i> &ensp; sales@cod-it.tech </p>
             </div>
         </div>
     </div>
@@ -590,6 +593,12 @@
                 }, false);
             });
         }, false);
+    })();
+    (function() { var zanalytics_ = document.createElement('script');
+        zanalytics_.type = 'text/javascript';
+        zanalytics_.async = false;
+        zanalytics_.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.ziftsolutions.com/analytics/8a99833d73db0e030173e36b79521ac5.js';
+        document.getElementsByTagName('script')[0].parentNode.appendChild(zanalytics_);
     })();
 </script>
 
